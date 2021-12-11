@@ -15,7 +15,6 @@ const goods = [{
         price: 250
     },
 ];
-
 const $goodsList = document.querySelector('.goods-list');
 
 const renderGoodsItem = ({
@@ -26,12 +25,14 @@ const renderGoodsItem = ({
 };
 
 const renderGoodsList = (list = goods) => {
-    let goodsList = list.map(
-        (item) => {
-            return renderGoodsItem(item)
-        }
-    ).join('');
-
+    let goodsList = list.map((item) => {
+        return renderGoodsItem(item)
+    }).join('');
+    /* запятые появляются вследствие того что метод join() объединяет все элементы 
+    массива, создаваемого при помощи метода map(),в строку, при этом запятые 
+    разделяющие значения в массиве остаются. Чтобы их убрать необходимо в join() 
+    указать сепаратор - ''.
+    */
     $goodsList.insertAdjacentHTML('beforeend', goodsList);
 }
 
