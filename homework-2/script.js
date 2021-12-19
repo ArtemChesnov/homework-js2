@@ -1,3 +1,42 @@
+const API_URL = 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses/';
+
+function send(onError, onSuccess, url, method = 'GET', data = '', headers = {}, timeout = 60000) {
+
+  let xhr;
+
+  if (window.XMLHttpRequest) {
+    // Chrome, Mozilla, Opera, Safari
+    xhr = new XMLHttpRequest();
+  } else if (window.ActiveXObject) {
+    // Internet Explorer
+    xhr = new ActiveXObject("Microsoft.XMLHTTP");
+  }
+
+  for ([key, value] of Object.entries(headers)) {
+    xhr.setRequestHeader(key, value)
+  }
+
+  xhr.timeout = timeout;
+
+  xhr.ontimeout = onError;
+
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4) {
+      if (xhr.status < 400) {
+        onSuccess(xhr.responseText)
+      } else if (xhr.status >= 400) {
+        onError(xhr.status)
+      }
+    }
+  }
+
+  xhr.open(method, url, true);
+
+  xhr.send(data);
+}
+
+
+
 function getCounter() {
   let last = 0;
 
@@ -110,25 +149,25 @@ class Showcase {
     this.basket = basket;
   }
 
-  fetchGoods() {
-    this.list = [
-      new Product({
-        id: 1,
-        title: 'T-shirt',
-        price: 140
-      }),
-      new Product({
-        id: 2,
-        title: 'Trousers',
-        price: 320
-      }),
-      new Product({
-        id: 3,
-        title: 'Tie',
-        price: 24
-      })
-    ]
+  _onSuccess(response) {
+    const data = JSON.parse(response)
+    data.forEach(product => {
+      this.list.push(
+        new Product({
+          id: product.id_product,
+          title: product.product_name,
+          price: product.price
+        })
+      )
+    });
+  }
 
+  _onError(err) {
+    console.log(err);
+  }
+
+  fetchGoods() {
+    send(this._onError, this._onSuccess.bind(this), `${API_URL}catalogData.json`);
   }
 
   addToCart(id) {
@@ -137,9 +176,7 @@ class Showcase {
     if (idx >= 0) {
       this.basket.add(this.list[idx]);
     }
-
   }
-
 }
 
 class RenderProductInShowcase {
@@ -162,7 +199,6 @@ class RenderProductInShowcase {
         </ul>
         `;
   }
-
 }
 
 class RenderProductInBasket {
@@ -191,7 +227,6 @@ class RenderProductInBasket {
           </ul>
         `;
   }
-
 }
 
 class RenderShowcase {
@@ -214,7 +249,6 @@ class RenderShowcase {
     this.renderProductsList();
     this.addToProductInShowcase();
   }
-
 }
 
 class RenderProductsListInBasket {
@@ -244,7 +278,6 @@ class RenderProductsListInBasket {
     this.renderProductsList();
     this.addToProductInBasket();
   }
-
 }
 
 class RenderTotalProductInBasket {
@@ -256,7 +289,6 @@ class RenderTotalProductInBasket {
     this.productsCount = Object.values(products.list).reduce((acc, product) => acc + product.count, 0)
     this.totalCount.innerHTML = this.productsCount;
   }
-
 }
 
 class RenderTotalProductPrice {
@@ -277,8 +309,11 @@ const drawBasket = new RenderProductsListInBasket();
 const totalPaid = new RenderTotalProductPrice();
 const totalProductsInBasket = new RenderTotalProductInBasket();
 showcase.fetchGoods();
-drawShowcase.reloadShowcase(showcase);
-totalProductsInBasket.renderTotalProducts(basket);
+
+setTimeout(() => {
+  drawShowcase.reloadShowcase(showcase);
+  totalProductsInBasket.renderTotalProducts(basket);
+}, 1000)
 
 const basketButton = document.querySelector('header');
 const buttonsBasket = document.querySelector('.basket');
