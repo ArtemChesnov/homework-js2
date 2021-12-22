@@ -1,0 +1,294 @@
+.container {
+    margin: 0 auto;
+    max-width: 75%;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: right;
+    background: #ffffff;
+    position: relative;
+}
+
+.basket__button {
+    position: relative;
+    margin: 25px 0 25px 0;
+    padding: 5px 15px;
+    border: none;
+    border-radius: 15px;
+    background: #ffffff;
+    box-shadow: inset -50px -50px 100px #dfdbdb,
+        inset 50px 50px 100px #ffffff,
+        0 10px 10px -5px #535050;
+    cursor: pointer;
+    transition: 0.15s;
+    color: #444141;
+    text-transform: capitalize;
+    outline: none;
+}
+
+.basket__button:hover {
+    color: #6e6666;
+    transform: scale(1.05);
+    box-shadow: inset -50px -50px 100px #dfdbdb,
+        inset 50px 50px 100px #ffffff,
+        0 20px 20px -5px #e4a1a1;
+}
+
+.basket__button:active {
+    transform: scale(0.95);
+    box-shadow: inset -50px -50px 100px #dfdbdb,
+        inset 50px 50px 100px #ffffff,
+        0 20px 20px -5px #e4a1a1;
+}
+
+.basket__button-span {
+    position: absolute;
+    padding: 2px 5px;
+    border-radius: 50%;
+    background: #e06a6a;
+    color: #ffffff;
+    top: -5px;
+    right: 0;
+    font-size: 11px;
+}
+
+.basket {
+    position: absolute;
+    top: 5vh;
+    right: 10%;
+    box-shadow: inset -50px -50px 100px #dfdbdb,
+        inset 50px 50px 100px #ffffff,
+        0 20px 20px -5px #535050;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    border-radius: 20px;
+    transition: 0.15s;
+}
+
+@media (max-width: 805px) {
+    .basket {
+        transform: scale(0.9);
+        top: 10vh;
+        right: -33px;
+    }
+}
+
+    .basket:hover {
+        box-shadow: inset -50px -50px 100px #dfdbdb,
+            inset 50px 50px 100px #ffffff,
+            0 20px 20px -5px #e4a1a1;
+    }
+
+    .title__list {
+        display: flex;
+        justify-content: space-around;
+        margin: 0;
+        padding: 15px 20px;
+        position: relative;
+    }
+
+    .title__list::before {
+        content: '';
+        width: 95%;
+        height: 2px;
+        background-color: black;
+        box-shadow: 0 0 5px #000000;
+        position: absolute;
+        left: 10px;
+        bottom: -5px;
+    }
+
+    .title__item {
+        list-style-type: none;
+        margin: 0 20px 0 0;
+        font-style: italic;
+    }
+
+    .title__item:nth-child(2),
+    .title__item:nth-child(3),
+    .title__item:nth-child(4) {
+        text-align: center;
+    }
+
+    .product__list {
+        display: flex;
+        justify-content: space-around;
+        padding: 15px 20px;
+        margin: 0;
+    }
+
+    .product__item {
+        list-style-type: none;
+        margin: 0 10px 0 0;
+        width: 25%;
+    }
+
+    .product__item:nth-child(3),
+    .product__item:nth-child(4) {
+        text-align: center;
+        margin: 0 0 0 10px;
+    }
+
+    .product__item:nth-child(5) {
+        text-align: right;
+        margin: 0;
+        width: auto;
+    }
+
+    .product__item-count {
+        margin: 2px;
+    }
+
+    .btn-countMin,
+    .btn-countPl {
+        border: none;
+        background: transparent;
+        cursor: pointer;
+        transition: 0.15s;
+    }
+
+    .btn-countMin:hover,
+    .btn-countPl:hover {
+        box-shadow: inset 0 0 2px 1px black;
+        border-radius: 50%;
+    }
+
+    .btn-countMin:active,
+    .btn-countPl:active {
+        box-shadow: inset 0 0 2px 1px #e4a1a1;
+        color: #e4a1a1;
+        transform: scale(0.95);
+    }
+
+    .delete-btn {
+        border: none;
+        background: transparent;
+        cursor: pointer;
+        transition: 0.15s;
+    }
+
+    .delete-btn:hover {
+        box-shadow: inset 0 0 2px 1px black;
+        border-radius: 50%;
+    }
+
+    .delete-btn:active {
+        box-shadow: inset 0 0 2px 1px #e4a1a1;
+        color: #e4a1a1;
+        transform: scale(0.95);
+    }
+
+    .total__list {
+        display: flex;
+        justify-content: right;
+        padding: 15px 20px;
+        margin: 0;
+        position: relative;
+        font-style: italic;
+    }
+
+    .total__item {
+        list-style-type: none;
+        margin: 0 0 0 10px;
+    }
+
+    .total__item-span {
+        margin: 0 0 0 5px;
+        color: #e06a6a;
+    }
+
+    .total__list::before {
+        content: '';
+        width: 95%;
+        height: 3px;
+        background-color: black;
+        position: absolute;
+        left: 10px;
+        top: 0;
+        box-shadow: 0 0 5px black;
+    }
+
+    .showcase {
+        margin: 250px 0 0 0;
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    .showcase {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .showcase__list {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border-radius: 15px;
+        background: #ffffff;
+        box-shadow: inset -50px -50px 100px #dfdbdb,
+            inset 50px 50px 100px #ffffff,
+            0 20px 20px -5px #535050;
+        transition: 0.25s ease-in-out;
+        cursor: pointer;
+        width: 150px;
+        height: 160px;
+        margin: 0;
+        padding: 0;
+        margin: 10px;
+    }
+
+    .showcase__list:hover {
+        transform: scale(1.03);
+        box-shadow: inset -50px -50px 100px #dfdbdb,
+            inset 50px 50px 100px #ffffff,
+            0 20px 20px -5px #e4a1a1;
+    }
+
+    .showcase__item {
+        list-style-type: none;
+    }
+
+    .item-title {
+        font-size: 24px;
+
+    }
+
+    .item-price {
+        margin: 15px 0 0 0;
+        font-size: 16px;
+        color: tomato;
+    }
+
+    .item-btn {
+        margin: 25px 0 0 0;
+    }
+
+    .showcase__button {
+        cursor: pointer;
+        border: none;
+        background: transparent;
+        border-radius: 10px;
+        box-shadow: inset -50px -50px 100px #cfc8c8,
+            inset 50px 50px 100px #bbb4b4;
+        padding: 7px 15px;
+        color: #504c4c;
+        transition: 0.15s;
+    }
+
+    .showcase__button:hover {
+        background: #e4a1a1;
+        box-shadow: 0 0 5px #e4a1a1;
+        color: black;
+    }
+
+    .showcase__button:active {
+        transform: scale(0.95);
+        box-shadow: none;
+    }
+
+    .hidden {
+        display: none;
+    }

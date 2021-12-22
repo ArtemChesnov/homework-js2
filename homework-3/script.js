@@ -129,7 +129,7 @@ class Basket {
     }, `${API_URL}deleteFromBasket.json`);
   }
 
-  fetchGoods() {
+  fetchGoods(drawBasket) {
     send(this._onError, response => {
       const data = JSON.parse(response);
 
@@ -144,8 +144,10 @@ class Basket {
           title: product_name,
           price: price,
           quality: quality,
+          img: `Product_${id_product}`
         }, quality));
       }
+      console.log(data.contents)
     }, `${API_URL}getBasket.json`);
 
   }
