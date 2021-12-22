@@ -147,6 +147,7 @@ class Basket {
           img: `Product_${id_product}`
         }, quality));
       }
+      console.log(data.contents)
     }, `${API_URL}getBasket.json`);
 
   }
