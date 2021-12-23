@@ -146,7 +146,6 @@ class Basket {
           quality: quality,
         }, quality));
       }
-      console.log(data.contents)
     }, `${API_URL}getBasket.json`);
 
   }
