@@ -1,0 +1,140 @@
+.visually-hidden {
+    position: absolute !important;
+    clip: rect(1px 1px 1px 1px);
+    clip: rect(1px, 1px, 1px, 1px);
+    padding: 0 !important;
+    border: 0 !important;
+    height: 1px !important;
+    width: 1px !important;
+    overflow: hidden;
+}
+
+.paragraph-box {
+    margin: 0 auto;
+    max-width: 150vh;
+}
+
+.form-box {
+    margin: 0 auto;
+    max-width: 150vh;
+}
+
+.just_text {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 26px;
+    width: 100%;
+}
+
+.just_text-new {
+    font-family: 'Segoe UI',
+        Tahoma,
+        Geneva,
+        Verdana,
+        sans-serif;
+    font-size: 26px;
+    width: 100%;
+}
+
+.form__control {
+    border: none;
+    border-radius: 35px;
+    padding: 25px 0px;
+    display: flex;
+    flex-direction: column;
+}
+
+.box {
+    margin: 0 0 45px 0;
+}
+
+.input {
+    font-size: 16px;
+    transition: 0.25s ease-in-out;
+    height: 8vh;
+    width: 100vh;
+    border-radius: 15px;
+    border: 1px solid rgba(93, 117, 136, 0.2);
+    box-shadow: 0 0 10px rgba(93, 117, 136, 0.6);
+    outline: none;
+    padding: 0 0 0 10px;
+    color: rgba(75, 92, 105, 0.8);
+    text-overflow: ellipsis;
+}
+
+.input:focus {
+    box-shadow: 0 0 10px rgba(236, 197, 70, 0.7);
+}
+
+.input::placeholder {
+    text-transform: capitalize;
+    opacity: 0.8;
+}
+
+.error {
+    transition: 0.15s ease-in-out;
+    border: 1px solid rgba(179, 25, 25, 0.2);
+    box-shadow: 0 0 10px rgba(255, 16, 16, 0.7);
+}
+
+.textarea {
+    font-size: 16px;
+    height: 15vh;
+    width: 97vh;
+    border-radius: 15px;
+    border: 1px solid rgba(93, 117, 136, 0.2);
+    box-shadow: 0 0 10px rgba(93, 117, 136, 0.6);
+    color: rgba(75, 92, 105, 1);
+    outline: none;
+    padding: 15px;
+}
+
+.textarea::placeholder {
+    text-transform: capitalize;
+    opacity: 0.8;
+}
+
+textarea:focus {
+    box-shadow: 0 0 10px rgba(236, 197, 70, 0.7);
+}
+
+.button {
+    margin: 0 0 0 15px;
+    padding: 15px 40px;
+    text-transform: uppercase;
+    background-color: rgba(217, 227, 235, 0.6);
+    border: none;
+    outline: none;
+    box-shadow: 0 0 10px rgba(93, 117, 136, 0.6);
+    color: rgba(75, 92, 105, 1);
+    cursor: pointer;
+    border-radius: 15px;
+}
+
+.button-box {
+    display: flex;
+    padding: 0 0 50px 0;
+}
+
+.button:hover {
+    transition: 0.1s ease-in-out;
+    box-shadow: 0 0 10px rgba(112, 103, 94, 0.8);
+    transform: scale(1.1);
+}
+
+.button:active {
+    box-shadow: 0 0 15px rgba(255, 16, 16, 0.7);
+    color: rgba(255, 16, 16, 0.7);
+}
+
+label {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+span {
+    position: absolute;
+    top: 110%;
+    left: 1%;
+    color: rgba(255, 16, 16, 0.7);
+}
