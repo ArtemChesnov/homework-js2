@@ -261,7 +261,7 @@ class RenderTotalProductInBasket {
     this.totalCount = document.querySelector('.basket__button-span');
   }
   renderTotalProducts(products) {
-    this.productsCount = Object.values(products.list).reduce((acc, product) => acc + product.count, 0)
+    this.productsCount = Object.values(products.list).reduce((acc, product) => acc + product.count, 0);
     this.totalCount.innerHTML = this.productsCount;
   }
 }
