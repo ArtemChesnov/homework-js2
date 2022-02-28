@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div class="paragraph-box">
+        <p class="just_text">Lorem, 'ipsum dolor sit ame't consectetur adipisicing
+            elit' . Placeat alias, voluptates nihil voluptatum doloremque
+            deleniti dolorem illum fugit, molestiae magnam optio ipsum
+            corrupti voluptas tempora provident 'culpa et eligendi est' .</p>
+    </div>
+
+    <div class="form-box">
+        <form class="form">
+            <fieldset class="form__control">
+                <legend class="form__legend visually-hidden">form</legend>
+                <div class="box name-box">
+                    <label>
+                        <input id="name" class="input" type="text" placeholder="name">
+                        <span class="error-name visually-hidden"> Возможен ввод
+                            только букв.</span>
+                    </label>
+                </div>
+
+                <div class="box phone-box">
+                    <label>
+                        <input id="phone" class="input" type="tel" placeholder="+7(XXX)XXX-XXXX">
+                        <span class="error-phone visually-hidden">Запись должна
+                            соответствовать формату - +7(___)___-____.</span>
+                    </label>
+                </div>
+
+                <div class="box email-box">
+                    <label>
+                        <input id="email" class="input" placeholder="email">
+                        <span class="error-email visually-hidden">Запись должна
+                            соответствовать формату - email@email.ru.</span>
+                    </label>
+                </div>
+
+                <div class="box">
+                    <label>
+                        <textarea class="textarea" type="text" placeholder="text"></textarea>
+                    </label>
+                </div>
+            </fieldset>
+            <div class="button-box">
+                <button id='button' class="button" type="submit">join now</button>
+            </div>
+        </form>
+    </div>
+
+
+
+    <script>
+        const textEl = document.querySelector('.just_text').textContent.replace(/\W(')|(')\W/gm, `"`);
+
+        function getTag() {
+            return `<p class='just_text-new'>${textEl}</p>`
+        }
+
+        document.querySelector('.just_text').insertAdjacentHTML('afterend', getTag());
+
+
+        const
+            regexp = {
+                name: /^[A-Za-zА-Яа-я]+$/,
+                phone: /^\+7\([0-9]{3}\)[0-9]{3}\-[0-9]{4}$/,
+                email: /^[a-z\-\.\_\d]+@[a-z\d]+.[a-z]{2,8}$/,
+            }
+
+        const formEls = id => {
+            return document.getElementById(id);
+        };
+
+        const validation = elem => {
+            const input = formEls(elem);
+            const check = regexp[elem].test(input.value);
+            if (!check) {
+                formEls(elem).classList.add('error');
+                formEls(elem).nextElementSibling.classList.remove('visually-hidden');
+                event.preventDefault();
+            } else {
+                formEls(elem).classList.remove('error');
+                formEls(elem).nextElementSibling.classList.add('visually-hidden')
+            }
+        };
+
+
+        formEls('button').addEventListener('click', event => {
+
+            for (let props in regexp) {
+                validation(props);
+            }
+        })
+    </script>
+</body>
+
+</html>
